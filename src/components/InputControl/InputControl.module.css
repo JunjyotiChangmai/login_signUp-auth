@@ -1,0 +1,27 @@
+.conatiner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.conatiner label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #383838;
+}
+
+.conatiner input {
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    outline: none;
+    padding: 10px 15px;
+    color: #000;
+}
+
+.conatiner input:hover {
+    border-color: #eee;
+}
+
+.conatiner input:focus {
+    border-color: #9900ff;
+}
