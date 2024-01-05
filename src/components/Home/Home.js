@@ -1,37 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../Firebase";
 
 const Home = (props) => {
-    function userActive()
-    {
-        if (props) {
-            return <h2>Welcome - {props.name}</h2>
-        }
-        else
-        return <h2>login please</h2>
+
+const userActive = () => {
+    const logOut = () => {
+        signOut(auth).then(() => {
+            console.log("Log-out successful.")
+        }).catch((error) => {
+            console.log(error)
+        });
     }
 
-    return (
-        <>
-            <div>
-                <div>
-                    <h1>
-                        <Link to="/login">Login</Link>
-                    </h1>
-                    <br />
-                    <h1>
-                        <Link to="/signup">Sign up</Link>
-                    </h1>
-                </div>
+    return<>
+        <h2>Welcome - {props.name}</h2>
+        <button onClick={logOut}>log out</button>
+    </>
+}
 
-                <br />
-                <br />
-                <br />
-                
-                <div>{userActive()}</div>
-            </div>
-        </>
-    );
+const userLogin = () => {
+    return <h2>login please</h2>
+}
+
+return (
+    <>
+    
+        <div>
+        <div>
+        <h1>
+            <Link to="/login">Login</Link>
+        </h1>
+        <br />
+        <h1>
+            <Link to="/signup">Sign up</Link>
+        </h1>
+    </div>
+            <br />
+            <br />
+            <br />
+
+            <h2>{props.name ? userActive() : userLogin()}</h2>
+        </div>
+    </>
+);
 }
 
 export default Home;

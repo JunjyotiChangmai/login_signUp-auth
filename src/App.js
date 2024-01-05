@@ -15,7 +15,6 @@ function App() {
         setUserName(user.displayName);
       }
       else setUserName("");
-      // console.log(user);
     });
   },[]);
 
